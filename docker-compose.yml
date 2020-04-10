@@ -1,0 +1,22 @@
+version: "3"
+services:
+  grpc:
+    build:
+      context: .
+      dockerfile: "docker/Dockerfile.grpc"
+    volumes:
+      - .:/grpc
+    ports:
+      - 50051:50051
+    expose:
+      - "50051"
+  gw:
+    build:
+      context: .
+      dockerfile: "docker/Dockerfile.gw"
+    volumes:
+      - .:/gateway
+    links:
+      - "grpc"
+    ports:
+      - 8081:8081

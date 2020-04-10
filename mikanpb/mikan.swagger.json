@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "mikanpb/mikan.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/example/echo": {
+      "post": {
+        "summary": "rpc Mikan(MikanRequest) returns (MikanResponse) {};",
+        "operationId": "Mikan",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/mikanMikanResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/mikanMikanRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MikanService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "mikanMikan": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Kind": {
+          "type": "string"
+        },
+        "Quality": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "mikanMikanRequest": {
+      "type": "object",
+      "properties": {
+        "mikan": {
+          "$ref": "#/definitions/mikanMikan"
+        }
+      }
+    },
+    "mikanMikanResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

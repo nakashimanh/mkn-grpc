@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package mikan;
+import "google/api/annotations.proto";
+option go_package = "mikanpb";
+
+message Mikan {
+  string Name = 1;
+  string Kind = 2;
+  int64 Quality = 3;
+}
+
+message MikanRequest { Mikan mikan = 1; }
+
+message MikanResponse { string result = 1; }
+
+service MikanService {
+  // rpc Mikan(MikanRequest) returns (MikanResponse) {};
+  rpc Mikan(MikanRequest) returns (MikanResponse) {
+    option (google.api.http) = {
+      post : "/v1/mkn/echo"
+      body : "*"
+    };
+  }
+}
