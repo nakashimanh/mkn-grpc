@@ -2,9 +2,9 @@
 
 REST API using `gRPC-gateway` example repository
 
-### Preparation for gRPC
+## Preparation for gRPC
 
-## Usage
+### Usage
 
 1. Define your [gRPC](https://grpc.io/docs/) service using protocol buffers
 
@@ -107,3 +107,16 @@ REST API using `gRPC-gateway` example repository
    ```
 
    It will generate a reverse proxy `path/to/your_service.pb.gw.go`.
+
+## Request sample
+```sh
+curl --location --request POST 'http://127.0.0.1:8081/v1/mkn/echo' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "mikan": {
+        "Name": "Request Best Mikan",
+        "Kind": "Good ++ Best",
+        "Quality": 200
+    }
+}'
+```
