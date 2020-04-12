@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:1.14-alpine
 WORKDIR /gateway
 ADD . /gateway
 COPY go.mod .

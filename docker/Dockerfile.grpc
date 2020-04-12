@@ -1,16 +1,18 @@
-FROM golang:latest
+FROM golang:1.14-alpine
 
-# コンテナ内に作業ディレクトリを作成
-# RUN mkdir /go/src/work
+RUN apk add --no-cache git \
+&& go get github.com/pilu/fresh
+
 # コンテナログイン時のディレクトリ指定
-#WORKDIR /go/src/work
-# ホストのファイルをコンテナの作業ディレクトリに移行
-#ADD . /go/src/work
-
 WORKDIR /grpc
+# ホストのファイルをコンテナの作業ディレクトリに移
 ADD . /grpc
+
 COPY go.mod .
 COPY go.sum .
-RUN go mod download
+RUN go mod download && go mod tidy
 
-CMD ["go", "run", "grpc/server.go"]
+COPY grpc/startup.sh /startup.sh
+RUN chmod 744 /startup.sh
+
+CMD [ "/startup.sh" ]

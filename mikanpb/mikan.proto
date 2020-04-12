@@ -11,14 +11,23 @@ message Mikan {
 }
 
 message MikanRequest { Mikan mikan = 1; }
-
 message MikanResponse { string result = 1; }
+
+message RegisterMikanRequest { Mikan mikan = 1; }
+message RegisterMikanResponse { string result = 1; }
 
 service MikanService {
   // rpc Mikan(MikanRequest) returns (MikanResponse) {};
   rpc Mikan(MikanRequest) returns (MikanResponse) {
     option (google.api.http) = {
       post : "/v1/mkn/echo"
+      body : "*"
+    };
+  }
+
+  rpc RegisterMikan(RegisterMikanRequest) returns (RegisterMikanResponse) {
+    option (google.api.http) = {
+      post : "/v1/mkn/new"
       body : "*"
     };
   }
