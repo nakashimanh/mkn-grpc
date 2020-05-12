@@ -1,4 +1,4 @@
-# mkn-grpc
+# mkn-grpc-gw
 
 REST API using `gRPC-gateway` example repository
 
