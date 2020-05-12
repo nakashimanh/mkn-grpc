@@ -44,6 +44,7 @@
     },
     "/v1/mkn/new": {
       "post": {
+        "summary": "comment here",
         "operationId": "RegisterMikan",
         "responses": {
           "200": {

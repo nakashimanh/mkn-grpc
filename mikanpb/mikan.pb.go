@@ -283,6 +283,7 @@ const _ = grpc.SupportPackageIsVersion4
 type MikanServiceClient interface {
 	// rpc Mikan(MikanRequest) returns (MikanResponse) {};
 	Mikan(ctx context.Context, in *MikanRequest, opts ...grpc.CallOption) (*MikanResponse, error)
+	// comment here
 	RegisterMikan(ctx context.Context, in *RegisterMikanRequest, opts ...grpc.CallOption) (*RegisterMikanResponse, error)
 }
 
@@ -316,6 +317,7 @@ func (c *mikanServiceClient) RegisterMikan(ctx context.Context, in *RegisterMika
 type MikanServiceServer interface {
 	// rpc Mikan(MikanRequest) returns (MikanResponse) {};
 	Mikan(context.Context, *MikanRequest) (*MikanResponse, error)
+	// comment here
 	RegisterMikan(context.Context, *RegisterMikanRequest) (*RegisterMikanResponse, error)
 }
 

@@ -25,6 +25,7 @@ service MikanService {
     };
   }
 
+  // comment here
   rpc RegisterMikan(RegisterMikanRequest) returns (RegisterMikanResponse) {
     option (google.api.http) = {
       post : "/v1/mkn/new"
