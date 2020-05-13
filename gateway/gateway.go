@@ -9,7 +9,8 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
-	gw "github.com/nakashimanh/mkn-grpc/mikanpb" // Update
+	gw "github.com/nakashimanh/mkn-grpc/proto/mikanpb" // Update
+	authgw "github.com/nakashimanh/mkn-grpc/proto/operator_auth"
 )
 
 var (
@@ -28,6 +29,11 @@ func run() error {
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	err := gw.RegisterMikanServiceHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts)
+	if err != nil {
+		return err
+	}
+
+	err = authgw.RegisterOperatorAuthServiceHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts)
 	if err != nil {
 		return err
 	}
