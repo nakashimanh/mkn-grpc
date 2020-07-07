@@ -67,7 +67,7 @@ func GenerateToken(operatorID string, deviceID string) (string, error) {
 		"zfb-app-id": c.DeviceID,
 	})
 
-	tokenString, err := token.SignedString([]byte(secret))
+	tokenString, err := token.SignedString([]byte("secret"))
 	if err != nil {
 		log.Fatal(err)
 	}
