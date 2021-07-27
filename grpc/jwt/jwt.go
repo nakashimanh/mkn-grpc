@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
 	"google.golang.org/grpc/metadata"
 )
 
