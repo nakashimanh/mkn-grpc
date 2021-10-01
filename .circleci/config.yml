@@ -1,0 +1,19 @@
+version: 2.1
+orbs:
+  shellcheck: circleci/shellcheck@2.0.0
+jobs:
+  my_job:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - shellcheck/install
+      - run:
+          command: shellcheck <options>
+          name: Run Shellcheck command
+workflows:
+  my_workflow:
+    jobs:
+      - shellcheck/check:
+          dir: ./
+          exclude: SC2148
