@@ -1,4 +1,6 @@
-# mkn-grpc-gw
+[![CircleCI](https://circleci.com/gh/nakashimanh/mkn-grpc.svg?style=svg)](https://app.circleci.com/pipelines/github/nakashimanh/mkn-grpc)
+
+# mkn-grpc
 
 REST API using `gRPC-gateway` example repository
 

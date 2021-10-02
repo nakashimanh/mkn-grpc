@@ -75,7 +75,7 @@ func GenerateToken(operatorID string, deviceID string) (string, error) {
 	return tokenString, err
 }
 
-// TokenVerifyMiddleWare is a fucntion verify token
+// TokenVerifyMiddleWare is a function verify token
 func TokenVerifyMiddleWare(ctx context.Context) error {
 	var err error
 	//meta, _ := metadata.FromIncomingContext(ctx)

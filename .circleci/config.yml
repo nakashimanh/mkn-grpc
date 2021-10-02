@@ -1,19 +1,21 @@
-version: 2.1
-orbs:
-  shellcheck: circleci/shellcheck@2.0.0
 jobs:
-  my_job:
-    docker:
-      - image: 'cimg/base:stable'
+  build:
+    executor:
+      name: go/default
+      tag: '1.17'
     steps:
       - checkout
-      - shellcheck/install
-      - run:
-          command: shellcheck <options>
-          name: Run Shellcheck command
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
+orbs:
+  go: circleci/go@1.7.0
+  shellcheck: circleci/shellcheck@2.0.0
+version: 2.1
 workflows:
-  my_workflow:
+  main:
     jobs:
+      - build
       - shellcheck/check:
           dir: ./
-          exclude: SC2148
+          
