@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd grpc
+cd grpc || exit
 fresh
